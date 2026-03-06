@@ -39,16 +39,18 @@ const confirmClear = () => {
         <div class="flex items-center gap-4">
           <div class="flex items-center border rounded">
             <v-btn
-              @click="basketStore.updateQuantity(item.product.id, -1)"
+              @click="
+                basketStore.updateQuantity(item.product.id, item.quantity - 1)
+              "
               class="px-3 py-1 hover:bg-gray-100"
             >
               -
             </v-btn>
-            <span class="px-3 py-1 font-mono"
-              >{{ item.quantity }}{{ "test" }}</span
-            >
+            <span class="px-3 py-1 font-mono">{{ item.quantity }}</span>
             <v-btn
-              @click="basketStore.updateQuantity(item.product.id, 1)"
+              @click="
+                basketStore.updateQuantity(item.product.id, item.quantity + 1)
+              "
               class="px-3 py-1 hover:bg-gray-100"
             >
               +

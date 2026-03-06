@@ -44,7 +44,9 @@ const confirmClear = () => {
             >
               -
             </v-btn>
-            <span class="px-3 py-1 font-mono">{{ item.quantity }}</span>
+            <span class="px-3 py-1 font-mono"
+              >{{ item.quantity }}{{ "test" }}</span
+            >
             <v-btn
               @click="basketStore.updateQuantity(item.product.id, 1)"
               class="px-3 py-1 hover:bg-gray-100"

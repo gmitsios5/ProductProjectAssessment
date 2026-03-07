@@ -25,10 +25,17 @@ export const useBasketStore = defineStore("basket", () => {
     const existingItem = items.value.find(
       (item) => item.product.id === product.id,
     );
-    if (existingItem) {
-      existingItem.quantity++;
+
+    const currentQtyInBasket = existingItem ? existingItem.quantity : 0;
+
+    if (product.stock > currentQtyInBasket) {
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        items.value.push({ product, quantity: 1 });
+      }
     } else {
-      items.value.push({ product, quantity: 1 });
+      alert("Item out of stock!");
     }
   }
 
@@ -40,12 +47,27 @@ export const useBasketStore = defineStore("basket", () => {
     items.value = items.value.filter((item) => item.product.id !== productId);
   }
 
-  function updateQuantity(productId: number, quantity: number) {
+  function updateQuantity(productId: number, newQuantity: number) {
     const item = items.value.find((i) => i.product.id === productId);
-    if (item && quantity > 0) {
-      item.quantity = quantity;
+    if (!item) return;
+
+    // If the new quantity exceeds stock, set it to max available and alert the user
+    if (newQuantity > item.product.stock) {
+      alert(`Συγγνώμη, υπάρχουν μόνο ${item.product.stock} τεμάχια διαθέσιμα.`);
+      item.quantity = item.product.stock; // Set quantity to max available
+      return;
+    }
+
+    if (newQuantity <= 0) {
+      removeFromBasket(productId);
+    } else {
+      item.quantity = newQuantity;
     }
   }
+
+  const totalItemsCount = computed(() => {
+    return items.value.reduce((total, item) => total + item.quantity, 0);
+  });
 
   return {
     items,
@@ -54,5 +76,6 @@ export const useBasketStore = defineStore("basket", () => {
     clearBasket,
     removeFromBasket,
     updateQuantity,
+    totalItemsCount,
   };
 });

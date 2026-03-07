@@ -6,18 +6,18 @@
           @click="currentView = 'products'"
           class="text-xl font-bold cursor-pointer text-blue-600"
         >
-          My Shop
+          E-shop
         </h1>
         <button
           @click="currentView = 'basket'"
           class="relative p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition"
         >
-          🛒 Basket
+          🛒
           <span
             v-if="basketStore.items.length > 0"
             class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold"
           >
-            {{ basketStore.items.length }}
+            {{ basketStore.totalItemsCount }}
           </span>
         </button>
       </div>
@@ -25,7 +25,7 @@
 
     <main class="max-w-6xl mx-auto mt-6">
       <ProductList v-if="currentView === 'products'" />
-      <BasketView v-else />
+      <BasketView v-else @goToProducts="currentView = 'products'" />
     </main>
   </div>
 </template>

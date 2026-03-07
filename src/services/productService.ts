@@ -10,6 +10,7 @@ const DUMMY_PRODUCTS: Product[] = [
     category: "Electronics",
     image:
       "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80",
+    stock: 5,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const DUMMY_PRODUCTS: Product[] = [
     category: "Accessories",
     image:
       "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=500&q=80",
+    stock: 5,
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const DUMMY_PRODUCTS: Product[] = [
     category: "Electronics",
     image:
       "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80",
+    stock: 5,
   },
   {
     id: 4,
@@ -37,7 +40,8 @@ const DUMMY_PRODUCTS: Product[] = [
     description: "Handcrafted genuine leather sleeve for 14-inch laptops.",
     category: "Accessories",
     image:
-      "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80",
+      "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRtZqNJK7rln_Vg2V5yTwXKycsaCyHoEiVFFfdgbP2McwuutOxWTqnqMaP2KOaR",
+    stock: 5,
   },
 ];
 

@@ -52,6 +52,25 @@ T**ypeScript Interfaces:** Centralized types in src/types/index.ts ensure data c
 
 **Tailwind v4:** Utilized the latest CSS-first engine for faster builds and modern styling capabilities.
 
+💡 Challenges & Solutions
+**LocalStorage Persistence in Testing**: Integrating localStorage for data persistence caused ReferenceError during unit tests in the Node.js environment.
+
+Solution: I configured the test environment to use jsdom and implemented a clean-up strategy in beforeEach to ensure test isolation.
+
+**Inventory Control**: Implementing a robust "Add to Basket" logic that respects product stock required careful state synchronization.
+
+Solution: Developed a centralized validation method within the Pinia store to handle quantity updates and stock limits globally.
+
+✨ Bonus Features Implemented
+**Data Persistence**: Integrated localStorage to ensure the basket state survives page reloads.
+
+**Stock Management Logic**: Added a validation layer to prevent overselling based on mock data availability.
+
+**Responsive UI**: Fully responsive design using Tailwind's mobile-first breakpoints.
+
+**Edge Case Testing**: Unit tests cover not just basic success paths but also boundary conditions (e.g., removing last item, exceeding stock).
+
 ## 📝 Author
 
 Georgios Mitsios Frontend Developer Assessment - 2026
+

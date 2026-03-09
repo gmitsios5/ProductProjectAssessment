@@ -4,4 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [vue(), tailwindcss()],
+  test: {
+    //have access to the DOM APIs, which is necessary for testing browser environment like localStorage and window
+    environment: "jsdom",
+    globals: true,
+  },
 });

@@ -6,6 +6,7 @@ import { Product } from "../types";
 describe("Basket Store", () => {
   beforeEach(() => {
     setActivePinia(createPinia());
+    localStorage.clear(); //empty storage before test execution in order to avoid test failures from previous left data
   });
 
   const mockProduct: Product = {
